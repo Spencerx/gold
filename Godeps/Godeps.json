@@ -1,0 +1,34 @@
+{
+	"ImportPath": "github.com/linkeddata/gold",
+	"GoVersion": "go1.2.1",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/drewolson/testflight",
+			"Rev": "1316579552caed520619a39e11456c4dff3b1d75"
+		},
+		{
+			"ImportPath": "github.com/kierdavis/argo",
+			"Rev": "ffaff9efd783c4334ad525345433d5ffc64ee44e"
+		},
+		{
+			"ImportPath": "github.com/kierdavis/go/splaytree",
+			"Rev": "b0379578ebf23f6fbd9dbcbd216061c4c0cc4a36"
+		},
+		{
+			"ImportPath": "github.com/presbrey/goraptor",
+			"Comment": "release.2010-03-20-31-gd71a4c7",
+			"Rev": "d71a4c7ff00a8c3a9b96735ae6ac808c789ffa13"
+		},
+		{
+			"ImportPath": "github.com/presbrey/magicmime",
+			"Rev": "de36bd7e24b7520e35b249c59fdc95240f251a2e"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/assert",
+			"Rev": "0d84e9b47985037f807582c88376da48d2caf276"
+		}
+	]
+}

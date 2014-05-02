@@ -1,0 +1,892 @@
+
+state 0
+	$accept: .squirtle $end 
+	raw_subject: .    (31)
+
+	BNODE  shift 20
+	IDENTIFIER  shift 25
+	INCLUDE  shift 10
+	IRIREF  shift 22
+	NAME  shift 9
+	TEMPLATE  shift 14
+	VAR  shift 21
+	.  reduce 31 (src line 235)
+
+	qname  goto 23
+	raw_iriref  goto 19
+	slash_separated_name  goto 24
+	apply_template  goto 8
+	bnode  goto 17
+	description  goto 6
+	iriref  goto 16
+	nonempty_subject  goto 15
+	raw_subject  goto 13
+	subject  goto 11
+	var  goto 18
+	squirtle  goto 1
+	statements  goto 2
+	statement  goto 3
+	name_decl  goto 4
+	include  goto 5
+	template  goto 7
+	template_start  goto 12
+
+state 1
+	$accept:  squirtle.$end 
+
+	$end  accept
+	.  error
+
+
+state 2
+	squirtle:  statements.EOF 
+	statements:  statements.statement 
+	raw_subject: .    (31)
+
+	BNODE  shift 20
+	EOF  shift 26
+	IDENTIFIER  shift 25
+	INCLUDE  shift 10
+	IRIREF  shift 22
+	NAME  shift 9
+	TEMPLATE  shift 14
+	VAR  shift 21
+	.  reduce 31 (src line 235)
+
+	qname  goto 23
+	raw_iriref  goto 19
+	slash_separated_name  goto 24
+	apply_template  goto 8
+	bnode  goto 17
+	description  goto 6
+	iriref  goto 16
+	nonempty_subject  goto 15
+	raw_subject  goto 13
+	subject  goto 11
+	var  goto 18
+	statement  goto 27
+	name_decl  goto 4
+	include  goto 5
+	template  goto 7
+	template_start  goto 12
+
+state 3
+	statements:  statement.    (3)
+
+	.  reduce 3 (src line 93)
+
+
+state 4
+	statement:  name_decl.    (4)
+
+	.  reduce 4 (src line 95)
+
+
+state 5
+	statement:  include.    (5)
+
+	.  reduce 5 (src line 96)
+
+
+state 6
+	statement:  description.    (6)
+
+	.  reduce 6 (src line 97)
+
+
+state 7
+	statement:  template.    (7)
+
+	.  reduce 7 (src line 98)
+
+
+state 8
+	statement:  apply_template.    (8)
+
+	.  reduce 8 (src line 99)
+
+
+state 9
+	name_decl:  NAME.raw_iriref AS IDENTIFIER 
+
+	IDENTIFIER  shift 25
+	IRIREF  shift 22
+	.  error
+
+	qname  goto 23
+	raw_iriref  goto 28
+	slash_separated_name  goto 24
+
+state 10
+	include:  INCLUDE.STRING 
+	include:  INCLUDE.raw_iriref 
+
+	IDENTIFIER  shift 25
+	IRIREF  shift 22
+	STRING  shift 29
+	.  error
+
+	qname  goto 23
+	raw_iriref  goto 30
+	slash_separated_name  goto 24
+
+state 11
+	description:  subject.description_body 
+	apply_template:  subject.apply_template_delim IDENTIFIER ( opt_template_args ) 
+
+	IS  shift 34
+	NEW  shift 35
+	{  shift 33
+	.  error
+
+	description_body  goto 31
+	apply_template_delim  goto 32
+
+state 12
+	template:  template_start.IDENTIFIER opt_template_argnames_outer description_body 
+
+	IDENTIFIER  shift 36
+	.  error
+
+
+state 13
+	subject:  raw_subject.    (29)
+
+	.  reduce 29 (src line 222)
+
+
+state 14
+	template_start:  TEMPLATE.    (15)
+
+	.  reduce 15 (src line 154)
+
+
+state 15
+	raw_subject:  nonempty_subject.    (30)
+
+	.  reduce 30 (src line 234)
+
+
+state 16
+	nonempty_subject:  iriref.    (32)
+
+	.  reduce 32 (src line 237)
+
+
+state 17
+	nonempty_subject:  bnode.    (33)
+
+	.  reduce 33 (src line 238)
+
+
+state 18
+	nonempty_subject:  var.    (34)
+
+	.  reduce 34 (src line 239)
+
+
+state 19
+	iriref:  raw_iriref.    (60)
+
+	.  reduce 60 (src line 291)
+
+
+state 20
+	bnode:  BNODE.IDENTIFIER 
+
+	IDENTIFIER  shift 37
+	.  error
+
+
+state 21
+	var:  VAR.    (59)
+
+	.  reduce 59 (src line 289)
+
+
+state 22
+	raw_iriref:  IRIREF.    (61)
+
+	.  reduce 61 (src line 293)
+
+
+state 23
+	raw_iriref:  qname.    (62)
+
+	.  reduce 62 (src line 294)
+
+
+state 24
+	raw_iriref:  slash_separated_name.    (63)
+
+	.  reduce 63 (src line 295)
+
+
+state 25
+	raw_iriref:  IDENTIFIER.    (64)
+	qname:  IDENTIFIER.: postfix_identifier 
+	slash_separated_name:  IDENTIFIER.slashed_extensions 
+
+	:  shift 38
+	/  shift 41
+	.  reduce 64 (src line 296)
+
+	slashed_extension  goto 40
+	slashed_extensions  goto 39
+
+state 26
+	squirtle:  statements EOF.    (1)
+
+	.  reduce 1 (src line 90)
+
+
+state 27
+	statements:  statements statement.    (2)
+
+	.  reduce 2 (src line 92)
+
+
+state 28
+	name_decl:  NAME raw_iriref.AS IDENTIFIER 
+
+	AS  shift 42
+	.  error
+
+
+state 29
+	include:  INCLUDE STRING.    (9)
+
+	.  reduce 9 (src line 101)
+
+
+state 30
+	include:  INCLUDE raw_iriref.    (10)
+
+	.  reduce 10 (src line 117)
+
+
+state 31
+	description:  subject description_body.    (12)
+
+	.  reduce 12 (src line 140)
+
+
+state 32
+	apply_template:  subject apply_template_delim.IDENTIFIER ( opt_template_args ) 
+
+	IDENTIFIER  shift 43
+	.  error
+
+
+state 33
+	description_body:  {.predicate_object_list } 
+
+	A_KWD  shift 49
+	IDENTIFIER  shift 25
+	IRIREF  shift 22
+	VAR  shift 21
+	*  shift 50
+	.  error
+
+	qname  goto 23
+	raw_iriref  goto 19
+	slash_separated_name  goto 24
+	iriref  goto 47
+	predicate  goto 46
+	var  goto 48
+	predicate_object_list  goto 44
+	predicate_object  goto 45
+
+state 34
+	apply_template_delim:  IS.    (26)
+
+	.  reduce 26 (src line 171)
+
+
+state 35
+	apply_template_delim:  NEW.    (27)
+
+	.  reduce 27 (src line 172)
+
+
+state 36
+	template:  template_start IDENTIFIER.opt_template_argnames_outer description_body 
+	opt_template_argnames_outer: .    (17)
+
+	(  shift 52
+	.  reduce 17 (src line 157)
+
+	opt_template_argnames_outer  goto 51
+
+state 37
+	bnode:  BNODE IDENTIFIER.    (50)
+
+	.  reduce 50 (src line 278)
+
+
+state 38
+	qname:  IDENTIFIER :.postfix_identifier 
+
+	A_KWD  shift 55
+	AS  shift 56
+	FALSE  shift 57
+	IDENTIFIER  shift 54
+	IS  shift 58
+	NAME  shift 59
+	TEMPLATE  shift 60
+	TRUE  shift 61
+	.  error
+
+	postfix_identifier  goto 53
+
+state 39
+	slash_separated_name:  IDENTIFIER slashed_extensions.    (66)
+	slashed_extensions:  slashed_extensions.slashed_extension 
+
+	/  shift 41
+	.  reduce 66 (src line 300)
+
+	slashed_extension  goto 62
+
+state 40
+	slashed_extensions:  slashed_extension.    (68)
+
+	.  reduce 68 (src line 303)
+
+
+state 41
+	slashed_extension:  /.postfix_identifier 
+
+	A_KWD  shift 55
+	AS  shift 56
+	FALSE  shift 57
+	IDENTIFIER  shift 54
+	IS  shift 58
+	NAME  shift 59
+	TEMPLATE  shift 60
+	TRUE  shift 61
+	.  error
+
+	postfix_identifier  goto 63
+
+state 42
+	name_decl:  NAME raw_iriref AS.IDENTIFIER 
+
+	IDENTIFIER  shift 64
+	.  error
+
+
+state 43
+	apply_template:  subject apply_template_delim IDENTIFIER.( opt_template_args ) 
+
+	(  shift 65
+	.  error
+
+
+state 44
+	description_body:  { predicate_object_list.} 
+	predicate_object_list:  predicate_object_list.predicate_object 
+
+	A_KWD  shift 49
+	IDENTIFIER  shift 25
+	IRIREF  shift 22
+	VAR  shift 21
+	}  shift 66
+	*  shift 50
+	.  error
+
+	qname  goto 23
+	raw_iriref  goto 19
+	slash_separated_name  goto 24
+	iriref  goto 47
+	predicate  goto 46
+	var  goto 48
+	predicate_object  goto 67
+
+state 45
+	predicate_object_list:  predicate_object.    (36)
+
+	.  reduce 36 (src line 242)
+
+
+state 46
+	predicate_object:  predicate.object_list 
+	raw_subject: .    (31)
+
+	BNODE  shift 20
+	DECIMAL  shift 78
+	DOUBLE  shift 79
+	FALSE  shift 81
+	IDENTIFIER  shift 25
+	INTEGER  shift 77
+	IRIREF  shift 22
+	STRING  shift 76
+	TRUE  shift 80
+	VAR  shift 21
+	.  reduce 31 (src line 235)
+
+	qname  goto 23
+	raw_iriref  goto 19
+	slash_separated_name  goto 24
+	apply_template  goto 75
+	bnode  goto 71
+	description  goto 74
+	iriref  goto 70
+	literal  goto 72
+	nonempty_subject  goto 15
+	object  goto 69
+	raw_subject  goto 13
+	subject  goto 11
+	var  goto 73
+	object_list  goto 68
+
+state 47
+	predicate:  iriref.    (38)
+
+	.  reduce 38 (src line 263)
+
+
+state 48
+	predicate:  var.    (39)
+
+	.  reduce 39 (src line 264)
+
+
+state 49
+	predicate:  A_KWD.    (40)
+
+	.  reduce 40 (src line 265)
+
+
+state 50
+	predicate:  *.    (41)
+
+	.  reduce 41 (src line 266)
+
+
+state 51
+	template:  template_start IDENTIFIER opt_template_argnames_outer.description_body 
+
+	{  shift 33
+	.  error
+
+	description_body  goto 82
+
+state 52
+	opt_template_argnames_outer:  (.opt_template_argnames ) 
+	opt_template_argnames: .    (19)
+
+	VAR  shift 85
+	.  reduce 19 (src line 160)
+
+	opt_template_argnames  goto 83
+	template_argnames  goto 84
+
+state 53
+	qname:  IDENTIFIER : postfix_identifier.    (65)
+
+	.  reduce 65 (src line 298)
+
+
+state 54
+	postfix_identifier:  IDENTIFIER.    (70)
+
+	.  reduce 70 (src line 307)
+
+
+state 55
+	postfix_identifier:  A_KWD.    (71)
+
+	.  reduce 71 (src line 308)
+
+
+state 56
+	postfix_identifier:  AS.    (72)
+
+	.  reduce 72 (src line 309)
+
+
+state 57
+	postfix_identifier:  FALSE.    (73)
+
+	.  reduce 73 (src line 310)
+
+
+state 58
+	postfix_identifier:  IS.    (74)
+
+	.  reduce 74 (src line 311)
+
+
+state 59
+	postfix_identifier:  NAME.    (75)
+
+	.  reduce 75 (src line 312)
+
+
+state 60
+	postfix_identifier:  TEMPLATE.    (76)
+
+	.  reduce 76 (src line 313)
+
+
+state 61
+	postfix_identifier:  TRUE.    (77)
+
+	.  reduce 77 (src line 314)
+
+
+state 62
+	slashed_extensions:  slashed_extensions slashed_extension.    (67)
+
+	.  reduce 67 (src line 302)
+
+
+state 63
+	slashed_extension:  / postfix_identifier.    (69)
+
+	.  reduce 69 (src line 305)
+
+
+state 64
+	name_decl:  NAME raw_iriref AS IDENTIFIER.    (11)
+
+	.  reduce 11 (src line 138)
+
+
+state 65
+	apply_template:  subject apply_template_delim IDENTIFIER (.opt_template_args ) 
+	opt_template_args: .    (23)
+	raw_subject: .    (31)
+
+	BNODE  shift 20
+	DECIMAL  shift 78
+	DOUBLE  shift 79
+	FALSE  shift 81
+	IDENTIFIER  shift 25
+	INTEGER  shift 77
+	IRIREF  shift 22
+	STRING  shift 76
+	TRUE  shift 80
+	VAR  shift 21
+	)  reduce 23 (src line 166)
+	.  reduce 31 (src line 235)
+
+	qname  goto 23
+	raw_iriref  goto 19
+	slash_separated_name  goto 24
+	apply_template  goto 75
+	bnode  goto 71
+	description  goto 74
+	iriref  goto 70
+	literal  goto 72
+	nonempty_subject  goto 15
+	object  goto 88
+	raw_subject  goto 13
+	subject  goto 11
+	var  goto 73
+	opt_template_args  goto 86
+	template_args  goto 87
+
+state 66
+	description_body:  { predicate_object_list }.    (13)
+
+	.  reduce 13 (src line 142)
+
+
+state 67
+	predicate_object_list:  predicate_object_list predicate_object.    (35)
+
+	.  reduce 35 (src line 241)
+
+
+state 68
+	predicate_object:  predicate object_list.    (37)
+	object_list:  object_list., object 
+
+	,  shift 89
+	.  reduce 37 (src line 244)
+
+
+state 69
+	object_list:  object.    (43)
+
+	.  reduce 43 (src line 269)
+
+
+state 70
+	nonempty_subject:  iriref.    (32)
+	object:  iriref.    (44)
+
+	IS  reduce 32 (src line 237)
+	NEW  reduce 32 (src line 237)
+	{  reduce 32 (src line 237)
+	.  reduce 44 (src line 271)
+
+
+state 71
+	nonempty_subject:  bnode.    (33)
+	object:  bnode.    (45)
+
+	IS  reduce 33 (src line 238)
+	NEW  reduce 33 (src line 238)
+	{  reduce 33 (src line 238)
+	.  reduce 45 (src line 272)
+
+
+state 72
+	object:  literal.    (46)
+
+	.  reduce 46 (src line 273)
+
+
+state 73
+	nonempty_subject:  var.    (34)
+	object:  var.    (47)
+
+	IS  reduce 34 (src line 239)
+	NEW  reduce 34 (src line 239)
+	{  reduce 34 (src line 239)
+	.  reduce 47 (src line 274)
+
+
+state 74
+	object:  description.    (48)
+
+	.  reduce 48 (src line 275)
+
+
+state 75
+	object:  apply_template.    (49)
+
+	.  reduce 49 (src line 276)
+
+
+state 76
+	literal:  STRING.    (51)
+	literal:  STRING.@ IDENTIFIER 
+	literal:  STRING.DT iriref 
+
+	DT  shift 91
+	@  shift 90
+	.  reduce 51 (src line 280)
+
+
+state 77
+	literal:  INTEGER.    (54)
+
+	.  reduce 54 (src line 283)
+
+
+state 78
+	literal:  DECIMAL.    (55)
+
+	.  reduce 55 (src line 284)
+
+
+state 79
+	literal:  DOUBLE.    (56)
+
+	.  reduce 56 (src line 285)
+
+
+state 80
+	literal:  TRUE.    (57)
+
+	.  reduce 57 (src line 286)
+
+
+state 81
+	literal:  FALSE.    (58)
+
+	.  reduce 58 (src line 287)
+
+
+state 82
+	template:  template_start IDENTIFIER opt_template_argnames_outer description_body.    (14)
+
+	.  reduce 14 (src line 144)
+
+
+state 83
+	opt_template_argnames_outer:  ( opt_template_argnames.) 
+
+	)  shift 92
+	.  error
+
+
+state 84
+	opt_template_argnames:  template_argnames.    (18)
+	template_argnames:  template_argnames., VAR 
+
+	,  shift 93
+	.  reduce 18 (src line 159)
+
+
+state 85
+	template_argnames:  VAR.    (21)
+
+	.  reduce 21 (src line 163)
+
+
+state 86
+	apply_template:  subject apply_template_delim IDENTIFIER ( opt_template_args.) 
+
+	)  shift 94
+	.  error
+
+
+state 87
+	opt_template_args:  template_args.    (22)
+	template_args:  template_args., object 
+
+	,  shift 95
+	.  reduce 22 (src line 165)
+
+
+state 88
+	template_args:  object.    (25)
+
+	.  reduce 25 (src line 169)
+
+
+state 89
+	object_list:  object_list ,.object 
+	raw_subject: .    (31)
+
+	BNODE  shift 20
+	DECIMAL  shift 78
+	DOUBLE  shift 79
+	FALSE  shift 81
+	IDENTIFIER  shift 25
+	INTEGER  shift 77
+	IRIREF  shift 22
+	STRING  shift 76
+	TRUE  shift 80
+	VAR  shift 21
+	.  reduce 31 (src line 235)
+
+	qname  goto 23
+	raw_iriref  goto 19
+	slash_separated_name  goto 24
+	apply_template  goto 75
+	bnode  goto 71
+	description  goto 74
+	iriref  goto 70
+	literal  goto 72
+	nonempty_subject  goto 15
+	object  goto 96
+	raw_subject  goto 13
+	subject  goto 11
+	var  goto 73
+
+state 90
+	literal:  STRING @.IDENTIFIER 
+
+	IDENTIFIER  shift 97
+	.  error
+
+
+state 91
+	literal:  STRING DT.iriref 
+
+	IDENTIFIER  shift 25
+	IRIREF  shift 22
+	.  error
+
+	qname  goto 23
+	raw_iriref  goto 19
+	slash_separated_name  goto 24
+	iriref  goto 98
+
+state 92
+	opt_template_argnames_outer:  ( opt_template_argnames ).    (16)
+
+	.  reduce 16 (src line 156)
+
+
+state 93
+	template_argnames:  template_argnames ,.VAR 
+
+	VAR  shift 99
+	.  error
+
+
+state 94
+	apply_template:  subject apply_template_delim IDENTIFIER ( opt_template_args ).    (28)
+
+	.  reduce 28 (src line 174)
+
+
+state 95
+	template_args:  template_args ,.object 
+	raw_subject: .    (31)
+
+	BNODE  shift 20
+	DECIMAL  shift 78
+	DOUBLE  shift 79
+	FALSE  shift 81
+	IDENTIFIER  shift 25
+	INTEGER  shift 77
+	IRIREF  shift 22
+	STRING  shift 76
+	TRUE  shift 80
+	VAR  shift 21
+	.  reduce 31 (src line 235)
+
+	qname  goto 23
+	raw_iriref  goto 19
+	slash_separated_name  goto 24
+	apply_template  goto 75
+	bnode  goto 71
+	description  goto 74
+	iriref  goto 70
+	literal  goto 72
+	nonempty_subject  goto 15
+	object  goto 100
+	raw_subject  goto 13
+	subject  goto 11
+	var  goto 73
+
+state 96
+	object_list:  object_list , object.    (42)
+
+	.  reduce 42 (src line 268)
+
+
+state 97
+	literal:  STRING @ IDENTIFIER.    (52)
+
+	.  reduce 52 (src line 281)
+
+
+state 98
+	literal:  STRING DT iriref.    (53)
+
+	.  reduce 53 (src line 282)
+
+
+state 99
+	template_argnames:  template_argnames , VAR.    (20)
+
+	.  reduce 20 (src line 162)
+
+
+state 100
+	template_args:  template_args , object.    (24)
+
+	.  reduce 24 (src line 168)
+
+
+31 terminals, 35 nonterminals
+78 grammar rules, 101/2000 states
+0 shift/reduce, 0 reduce/reduce conflicts reported
+84 working sets used
+memory: parser 160/30000
+33 extra closures
+113 shift entries, 11 exceptions
+59 goto entries
+66 entries saved by goto default
+Optimizer space used: output 132/30000
+132 table entries, 0 zero
+maximum spread: 31, maximum offset: 95
